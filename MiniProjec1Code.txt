@@ -1,0 +1,254 @@
+language(english).
+language(french).
+language(arabic).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% From French to arabic
+translate(french, "Bonsoir", arabic, "مساء الخير").
+translate(french, "Bonjour", arabic, "صباح الخير").
+translate(french, "Merci", arabic, "شكرا").
+translate(french, "S'il te plaît", arabic, "رجاء").
+translate(french, "Je suis désolé", arabic, "انا اسف").
+translate(french, "Excuse-moi", arabic, "بعد اذنك").
+translate(french, "Je ne comprends pas", arabic, "لم افهمك").
+translate(french, "Je voudrais", arabic, "اود").
+translate(french, "Non pas du tout", arabic, "لا، بالطبع لا").
+translate(french, "Où sommes-nous?", arabic, "اين نحن؟").
+translate(french, "Pouvez-vous m'aider?", arabic, "هل يمكنك مساعدتي؟").
+translate(french, "Répetez s'il-vous-plait", arabic, "اعد رجاء").
+translate(french, "je cherche cette adresse", arabic, "انا ابحث عن هذا العنوان").
+translate(french, "Je voudrais annuler ma réservation", arabic, "اود ان الغي حجزي").
+translate(french, "Comment puis-je vous aider?", arabic, "كيف يمكنني مساعدتك؟").
+translate(french, "Combien ça coûte?", arabic, "كم سعره؟").
+translate(french, "Quelle heure est-il?", arabic, "الساعة كم؟").
+translate(french, "C’est trop cher", arabic, "انه غالي جدا").
+translate(french, "Je suis ravi de vous rencontrer", arabic, "تشرفت بمعرفتك").
+translate(french, "Comment ça va?", arabic, "كيف حالك؟").
+translate(french, "Bien, merci. Et vous-même?", arabic, "الحمدلله، وانت؟").
+translate(french, "Bien", arabic, "حسنا").
+translate(french, "A bientôt", arabic, "اراك قريبا").
+translate(french, "Au revoir", arabic, "الى اللقاء").
+translate(french, "Parlez-vous anglais?", arabic, "هل تتحدث الانجليزية").
+translate(french, "Qu’avez-vous mangé?", arabic, "ماذا اكلت").
+translate(french, "que fais-tu?", arabic, "ماذا تفعل؟").
+translate(french, "Tu comprends?", arabic, "هل فهمت؟").
+translate(french, "Bienvenue", arabic, "العفو").
+translate(french, "Pardon, excusez-moi", arabic, "عفوا، بعد اذنك").
+translate(french, "Je ne parle pas français", arabic, "انا لا اتحدث الفرنسية").
+translate(french, "De rien", arabic, "عفوا").
+translate(french, "Où vas-tu?", arabic, "الى اين انت ذاهب؟").
+translate(french, "quelle est ta majeure", arabic, "ما هو تخصصك؟").
+translate(french, "Quel âge as-tu?", arabic, "كم عمرك؟").
+translate(french, "Nous sommes dans quel jour?", arabic, "في اي يوم نحن؟").
+translate(french, "Quelle est votre couleur préférée?", arabic, "ما هو لونك المفضل؟").
+translate(french, "Ceci est un projet de groupe", arabic, "هذا مشروع جماعي").
+translate(french, "Je te verrai le week-end", arabic, "سوف اراك في اجازة نهاية الاسبوع").
+translate(french, "je vais aller me coucher", arabic, "سوف اذهب للنوم").
+translate(french, "j'ai faim, je veux manger", arabic, "انا جائع، اريد الاكل").
+translate(french, "Ceci est un traducteur", arabic, "هذا مترجم").
+translate(french, "Je veux apprendre l'anglais", arabic, "اريد تعلم الانجليزية").
+translate(french, "Je veux apprendre le français", arabic, "اريد تعلم الفرنسية").
+translate(french, "je veux apprendre l'arabe", arabic, "اريد تعلم العربية").
+translate(french, "Quelle est ta chanson préférée?", arabic, "ما هي اغنيتك المفضلة؟").
+translate(french, "Il fait chaud ici", arabic, "الجو حار هنا").
+translate(french, "Il fait froid ici", arabic, "الجو بارد هنا").
+translate(french, "Je me sens malade aujourd'hui", arabic, "اشعر انني مريض اليوم").
+translate(french, "Allô", arabic, "اهلا").
+translate(french, "Pourquoi?", arabic, "لماذا؟").
+translate(french, "Oui", arabic, "نعم").
+translate(french, "Non", arabic, "لا").
+translate(french, "Bien sûr", arabic, "بالتأكيد").
+translate(french, "Probablement", arabic, "غالبا").
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% From Arabic to french
+:- discontiguous translate/4.
+translate(arabic, "مساء الخير",french, "Bonsoir").
+translate(arabic, "صباح الخير", french, "Bonjour").
+translate(arabic, "شكرا", french, "Merci").
+translate(arabic, "رجاء", french, "S'il te plaît").
+translate(arabic, "انا اسف", french, "Je suis désolé").
+translate(arabic, "بعد اذنك", french, "Excuse-moi").
+translate(arabic, "لم افهمك", french, "Je ne comprends pas").
+translate(arabic, "اود", french, "Je voudrais").
+translate(arabic, "لا، بالطبع لا", french, "Non pas du tout").
+translate(arabic, "اين نحن؟", french, "Où sommes-nous?").
+translate(arabic, "هل يمكنك مساعدتي؟", french, "Pouvez-vous m'aider?").
+translate(arabic, "اعد رجاء", french, "Répetez s'il-vous-plait").
+translate(arabic, "انا ابحث عن هذا العنوان", french, "je cherche cette adresse").
+translate(arabic, "اود ان الغي حجزي", french, "Je voudrais annuler ma réservation").
+translate(arabic, "كيف يمكنني مساعدتك؟", french, "Comment puis-je vous aider?").
+translate(arabic, "كم سعره؟", french, "Combien ça coûte?").
+translate(arabic, "الساعة كم؟", french, "Quelle heure est-il?").
+translate(arabic, "انه غالي جدا", french, "C’est trop cher").
+translate(arabic, "تشرفت بمعرفتك", french, "Je suis ravi de vous rencontrer").
+translate(arabic, "كيف حالك؟", french, "Comment ça va?").
+translate(arabic, "الحمدلله، وانت؟", french, "Bien, merci. Et vous-même?").
+translate(arabic, "حسنا", french, "Bien").
+translate(arabic, "اراك قريبا", french, "A bientôt").
+translate(arabic, "الى اللقاء", french, "Au revoir").
+translate(arabic, "هل تتحدث الانجليزية", french, "Parlez-vous anglais?").
+translate(arabic, "ماذا اكلت", french, "Qu’avez-vous mangé?").
+translate(arabic, "ماذا تفعل؟", french, "que fais-tu?").
+translate(arabic, "هل فهمت؟", french, "Tu comprends?").
+translate(arabic, "العفو", french, "Bienvenue").
+translate(arabic, "عفوا، بعد اذنك", french, "Pardon, excusez-moi").
+translate(arabic, "انا لا اتحدث الفرنسية", french, "Je ne parle pas français").
+translate(arabic, "عفوا", french, "De rien").
+translate(arabic, "الى اين انت ذاهب؟", french, "Où vas-tu?").
+translate(arabic, "ما هو تخصصك؟", french, "quelle est ta majeure").
+translate(arabic, "كم عمرك؟", french, "Quel âge as-tu?").
+translate(arabic, "في اي يوم نحن؟", french, "Nous sommes dans quel jour?").
+translate(arabic, "ما هو لونك المفضل؟", french, "Quelle est votre couleur préférée?").
+translate(arabic, "هذا مشروع جماعي", french, "Ceci est un projet de groupe").
+translate(arabic, "سوف اراك في اجازة نهاية الاسبوع", french, "Je te verrai le week-end").
+translate(arabic, "سوف اذهب للنوم", french, "je vais aller me coucher").
+translate(arabic, "انا جائع، اريد الاكل", french, "j'ai faim, je veux manger").
+translate(arabic, "هذا مترجم", french, "Ceci est un traducteur").
+translate(arabic, "اريد تعلم الانجليزية", french, "Je veux apprendre l'anglais").
+translate(arabic, "اريد تعلم الفرنسية", french, "Je veux apprendre le français").
+translate(arabic, "اريد تعلم العربية", french, "je veux apprendre l'arabe").
+translate(arabic, "ما هي اغنيتك المفضلة؟", french, "Quelle est ta chanson préférée?").
+translate(arabic, "الجو حار هنا", french, "Il fait chaud ici").
+translate(arabic, "الجو بارد هنا", french, "Il fait froid ici").
+translate(arabic, "اشعر انني مريض اليوم", french, "Je me sens malade aujourd'hui").
+translate(arabic, "اهلا", french, "Allô").
+translate(arabic, "لماذا؟", french, "pourquoi?").
+translate(arabic, "نعم", french, "Oui").
+translate(arabic, "لا", french, "Non").
+translate(arabic, "بالتأكيد", french, "Bien sûr").
+translate(arabic, "غالبا", french, "Probablement").
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% From English to French and Arabic
+
+:- discontiguous translate/4.
+translate(english, "Good evening", french, "Bonsoir").
+translate(english, "Good evening", arabic, "مساء الخير").
+translate(english, "Good morning", french, "Bonjour").
+translate(english, "Good morning", arabic, "صباح الخير").
+translate(english, "Thank you", french, "Merci").
+translate(english, "Thank you", arabic, "شكرا").
+translate(english, "Please", french, "S'il te plaît").
+translate(english, "Please", arabic, "رجاء").
+translate(english, "I am sorry", french, "Je suis désolé").
+translate(english, "I am sorry", arabic, "انا اسف").
+translate(english, "Excuse me", french, "Excuse-moi").
+translate(english, "Excuse me", arabic, "بعد اذنك").
+translate(english, "I do not understand", french, "Je ne comprends pas").
+translate(english, "I do not understand", arabic, "لم افهمك").
+translate(english, "I would like", french, "Je voudrais").
+translate(english, "I would like", arabic, "اود").
+translate(english, "No, not at all", french, "Non pas du tout").
+translate(english, "No, not at all", arabic, "لا، بالطبع لا").
+translate(english, "Where are we?", french, "Où sommes-nous?").
+translate(english, "Where are we?", arabic, "اين نحن؟").
+translate(english, "Can you help me?", french, "Pouvez-vous m'aider?").
+translate(english, "Can you help me?", arabic, "هل يمكنك مساعدتي؟").
+translate(english, "Please repeat", french, "Répetez s'il-vous-plait").
+translate(english, "Please repeat", arabic, "اعد رجاء").
+translate(english, "I am looking for this address", french, "je cherche cette adresse").
+translate(english, "I am looking for this address", arabic, "انا ابحث عن هذا العنوان").
+translate(english, "I would like to cancel my reservation", french, "Je voudrais annuler ma réservation").
+translate(english, "I would like to cancel my reservation", arabic, "اود ان الغي حجزي").
+translate(english, "How may I help you?", french, "Comment puis-je vous aider?").
+translate(english, "How may I help you?", arabic, "كيف يمكنني مساعدتك؟").
+translate(english, "How much is it?", french, "Combien ça coûte?").
+translate(english, "How much is it?", arabic, "كم سعره؟").
+translate(english, "What time is it?", french, "Quelle heure est-il?").
+translate(english, "What time is it?", arabic, "الساعة كم؟").
+translate(english, "It is too expensive", french, "C’est trop cher").
+translate(english, "It is too expensive", arabic, "انه غالي جدا").
+translate(english, "I am pleased to meet you", french, "Je suis ravi de vous rencontrer").
+translate(english, "I am pleased to meet you", arabic, "تشرفت بمعرفتك").
+translate(english, "How are you?", french, "Comment ça va?").
+translate(english, "How are you?", arabic, "كيف حالك؟").
+translate(english, "Fine thanks, and you?", french, "Bien, merci. Et vous-même?").
+translate(english, "Fine thanks, and you?", arabic, "الحمدلله، وانت؟").
+translate(english, "Fine", french, "Bien").
+translate(english, "Fine", arabic, "حسنا").
+translate(english, "See you soon", french, "A bientôt").
+translate(english, "See you soon", arabic, "اراك قريبا").
+translate(english, "Goodbye", french, "Au revoir").
+translate(english, "Goodbye", arabic, "الى اللقاء").
+translate(english, "Do you speak English?", french, "Parlez-vous anglais?").
+translate(english, "Do you speak English?", arabic, "هل تتحدث الانجليزية").
+translate(english, "What did you eat?", french, "Qu’avez-vous mangé?").
+translate(english, "What did you eat?", arabic, "ماذا اكلت").
+translate(english, "What are you doing?", french, "que fais-tu?").
+translate(english, "What are you doing?", arabic, "ماذا تفعل؟").
+translate(english, "Do you understand?", french, "Tu comprends?").
+translate(english, "Do you understand?", arabic, "هل فهمت؟").
+translate(english, "Welcome", french, "Bienvenue").
+translate(english, "Welcome", arabic, "العفو").
+translate(english, "Pardon, excuse me", french, "Pardon, excusez-moi").
+translate(english, "Pardon, excuse me", arabic, "عفوا، بعد اذنك").
+translate(english, "I do not speak French", french, "Je ne parle pas français").
+translate(english, "I do not speak French", arabic, "انا لا اتحدث الفرنسية").
+translate(english, "You are welcome", french, "De rien").
+translate(english, "You are welcome", arabic, "عفوا").
+translate(english, "Where are you going?", french, "Où vas-tu?").
+translate(english, "Where are you going?", arabic, "الى اين انت ذاهب؟").
+translate(english, "What is your major", french, "quelle est ta majeure").
+translate(english, "What is your major", arabic, "ما هو تخصصك؟").
+translate(english, "How old are you?", french, "Quel âge as-tu?").
+translate(english, "How old are you?", arabic, "كم عمرك؟").
+translate(english, "We are in what day?", french, "Nous sommes dans quel jour?").
+translate(english, "We are in what day?", arabic, "في اي يوم نحن؟").
+translate(english, "What is your favorite color?", french, "Quelle est votre couleur préférée?").
+translate(english, "What is your favorite color?", arabic, "ما هو لونك المفضل؟").
+translate(english, "This is a group project", french, "Ceci est un projet de groupe").
+translate(english, "This is a group project", arabic, "هذا مشروع جماعي").
+translate(english, "I will see you on the weekend", french, "Je te verrai le week-end").
+translate(english, "I will see you on the weekend", arabic, "سوف اراك في اجازة نهاية الاسبوع").
+translate(english, "I will go to sleep", french, "je vais aller me coucher").
+translate(english, "I will go to sleep", arabic, "سوف اذهب للنوم").
+translate(english, "I am hungry, I want to eat", french, "j'ai faim, je veux manger").
+translate(english, "I am hungry, I want to eat", arabic, "انا جائع، اريد الاكل").
+translate(english, "This is a translator", french, "Ceci est un traducteur").
+translate(english, "This is a translator", arabic, "هذا مترجم").
+translate(english, "I want to learn English", french, "Je veux apprendre l'anglais").
+translate(english, "I want to learn English", arabic, "اريد تعلم الانجليزية").
+translate(english, "I want to learn French", french, "Je veux apprendre le français").
+translate(english, "I want to learn French", arabic, "اريد تعلم الفرنسية").
+translate(english, "I want to learn Arabic", french, "je veux apprendre l'arabe").
+translate(english, "I want to learn Arabic", arabic, "اريد تعلم العربية").
+translate(english, "What is your favorite song?", french, "Quelle est ta chanson préférée?").
+translate(english, "What is your favorite song?", arabic, "ما هي اغنيتك المفضلة؟").
+translate(english, "It is hot in here", french, "Il fait chaud ici").
+translate(english, "It is hot in here", arabic, "الجو حار هنا").
+translate(english, "It is cold in here", french, "Il fait froid ici").
+translate(english, "It is cold in here", arabic, "الجو بارد هنا").
+translate(english, "I feel sick today", french, "Je me sens malade aujourd'hui").
+translate(english, "I feel sick today", arabic, "اشعر انني مريض اليوم").
+translate(english, "Hello", french, "Allô").
+translate(english, "Hello", arabic, "اهلا").
+translate(english, "Why?", french, "pourquoi?").
+translate(english, "Why?", arabic, "لماذا؟").
+translate(english, "Yes", french, "Oui").
+translate(english, "Yes", arabic, "نعم").
+translate(english, "No", french, "Non").
+translate(english, "No", arabic, "لا").
+translate(english, "Sure", french, "Bien sûr").
+translate(english, "Sure", arabic, "بالتأكيد").
+translate(english, "Probably", french, "Probablement").
+translate(english, "Probably", arabic, "غالبا").
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define a predicate to check if a language is supported
+is_supported_language(Lang) :-
+    language(Lang).
+
+% Define a predicate to perform the translation
+translate(FromLang, FromPhrase, ToLang, ToPhrase) :-
+    is_supported_language(FromLang),
+    is_supported_language(ToLang),
+    translate_helper(FromLang, FromPhrase, ToLang, ToPhrase).
+
+% Define a helper predicate to find the translation
+translate_helper(FromLang, FromPhrase, ToLang, ToPhrase) :-
+    translate(FromLang, FromPhrase, ToLang, ToPhrase).
+
+% Define a predicate to handle errors
+translate(_, _, _, _) :-
+    write("Error: Unsupported source or target language or translation not found").

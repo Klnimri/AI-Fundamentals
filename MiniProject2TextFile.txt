@@ -1,0 +1,271 @@
+#-----------------------initializing window and Constants--------------------------------------------------------- 
+import pygame
+import math
+from queue import PriorityQueue
+
+WIDTH = 468 # the width of the window  
+WIN = pygame.display.set_mode((WIDTH, WIDTH)) # initializing the window with size of WIDTH * WIDTH ; not using height for simplicity
+pygame.display.set_caption("A* search algorithms to find the path")
+
+RED = (255, 0, 0) # is end cell
+GREEN = (0, 255, 0) # is start cell
+BLUE = (0, 0, 255) # is closed cell
+WHITE = (255, 255, 255) # unvisited cell
+BLACK = (0, 0, 0) # blocked or barrier cell                
+PURPLE = (128, 0, 128) # is Path cell
+ORANGE = (255, 165 ,0) # is open cell
+GREY = (128, 128, 128) # grid line color
+
+#----------------defining Class for cells in the maze----------------------------------------------------------------
+
+class Cell:
+	def __init__(self, row, col, width, total_rows):
+		self.row = row
+		self.col = col
+		self.x = row * width
+		self.y = col * width
+		self.color = WHITE
+		self.neighbors = []
+		self.width = width
+		self.total_rows = total_rows
+
+	def get_coordinate(self):
+		return self.row, self.col
+
+	def is_closed(self):
+		return self.color == BLUE
+
+	def is_open(self):
+		return self.color == ORANGE
+
+	def is_barrier(self):
+		return self.color == BLACK
+
+	def is_start(self):
+		return self.color == GREEN
+
+	def make_start(self):
+		self.color = GREEN
+
+	def is_end(self):
+		return self.color == RED
+
+	def reset(self):
+		self.color = WHITE
+
+	
+
+	def make_closed(self):
+		self.color = BLUE
+
+	def make_open(self):
+		self.color = ORANGE
+
+	def make_barrier(self):
+		self.color = BLACK
+
+	def make_end(self):
+		self.color = RED
+
+	def make_path(self):
+		self.color = PURPLE
+
+	def draw(self, win):
+		pygame.draw.rect(win, self.color, (self.x, self.y, self.width, self.width))
+	"""
+	------------------------------finding cell neighbors while ignoring blocked ones-----------------------------------------------	
+	example: cell row= 49 , total_rows = 50 , checking down neighbors
+		if self.row < self.total_rows - 1  ; the first condition will be False because there is no row under 49 the rows is from 0-49 
+		and ; if the first conditon is True will check the second
+		not grid[self.row + 1][self.col].is_barrier(): the second condition will be False if the color of the cell Black meaning it is blocked
+	"""
+	def update_neighbors(self, grid):
+		self.neighbors = []
+		if self.row < self.total_rows - 1 and not grid[self.row + 1][self.col].is_barrier(): # DOWN checking if there is a down neighbor and not blocked
+			self.neighbors.append(grid[self.row + 1][self.col])
+
+		if self.row > 0 and not grid[self.row - 1][self.col].is_barrier(): # UP checking if there is a up neighbor and not blocked
+			self.neighbors.append(grid[self.row - 1][self.col])
+
+		if self.col < self.total_rows - 1 and not grid[self.row][self.col + 1].is_barrier(): # RIGHT checking if there is a right neighbor and not blocked
+			self.neighbors.append(grid[self.row][self.col + 1])
+
+		if self.col > 0 and not grid[self.row][self.col - 1].is_barrier(): # LEFT checking if there is a left neighbor and not blocked
+			self.neighbors.append(grid[self.row][self.col - 1])
+
+	def __lt__(self, other):
+		return False
+
+"""
+defining the heuristic_function which is manhattan distance
+	it is h = |x1 - x2| + |y1 - y2|
+"""
+def heuristic_function(p1, p2):
+	x1, y1 = p1 # p1 will be (row , col)
+	x2, y2 = p2 # p2 will be (row , col)
+	return abs(x1 - x2) + abs(y1 - y2)
+
+"""
+drawing the path from end to start using came_from dictionary
+	{start:p3 , p3:p6 , p6:p9 , p9:end}
+"""
+def reconstruct_path(came_from, current, draw):
+	while current in came_from:
+		current = came_from[current]
+		if current.color != GREEN:
+			current.make_path() # will change the color to purple
+		draw() # will draw the new color in the window
+
+#--------------A* algorithm------------------------
+
+def algorithm(draw, grid, start, end):
+	count = 0 # this count can tell us which cell visited first
+	open_set = PriorityQueue() # the open set is Priority Queue will add every cell we visit 
+						       # and take out the one with least h function and least count number
+	open_set.put((0, count, start)) # add the start cell with f = 0 , count = 0 , start = starting cell
+	came_from = {} # this dictionary just to save the cell we came from to draw the path at the end
+	g_score = {cell: float("inf") for row in grid for cell in row} # set all the g value of the cells to infinity at the beging
+	g_score[start] = 0 # the g value of the start ccell to 0
+	f_score = {cell: float("inf") for row in grid for cell in row} # set all the f value of the cells to infinity at the beging
+	f_score[start] = heuristic_function(start.get_coordinate(), end.get_coordinate()) # calculte the f value of the start cell
+																					  # the distance from the start to the end cell
+																					  # f= g value + heuristic_function
+
+	open_set_hash = {start} # this open set is the same open set but it is hashed
+							# so we can search through the set to see if the cell has been visited or not
+							# we can not search through PriorityQueue open set 
+	while not open_set.empty():
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT: # to stop the algorithm from the keyboard
+				pygame.quit()
+
+		current = open_set.get()[2] # to pop the lowest cell with least h function and least count number
+		open_set_hash.remove(current) # to synchronize the hash open set with PriorityQueue open set 
+									  # because they are the same thing
+
+		if current == end:
+			reconstruct_path(came_from, end, draw) # call reconstruct_path method to draw the path at the end
+			end.make_end() #change the color of the cell to RED
+			return True # to stop the algorithm
+
+		for neighbor in current.neighbors: # loop to visit all cell neighbors , every cell has array of it's neighbors
+			temp_g_score = g_score[current] + 1 # calculate the g value for all neighbors
+												# the g value is how far the cell from the start cell
+												# it is always incremented by 1
+			if temp_g_score < g_score[neighbor]: # to update the g value and f value of the neighbor
+				came_from[neighbor] = current # add the cell to the dictionary example: {neighbor: start}
+				g_score[neighbor] = temp_g_score # update the g value
+				f_score[neighbor] = temp_g_score + heuristic_function(neighbor.get_coordinate(), end.get_coordinate())
+												 # update the f value , f= g value + heuristic_function
+				if neighbor not in open_set_hash: # if the cell is not in the open cell 
+					count += 1 # incremented by 1
+					open_set.put((f_score[neighbor], count, neighbor)) # add the cell to open set with (f , count ,cell)
+					open_set_hash.add(neighbor) # to synchronize the hash open set with PriorityQueue open set 
+					neighbor.make_open() # change the color of the cell to ORANGE
+
+		draw() # draw the cell to apply changes to colors in the window
+
+		if current != start:
+			current.make_closed() # change the color of the cell to BLUE
+								  # the cell has been closed
+
+	return False # to stop the algorithm
+
+
+def make_grid(rows, width):
+	grid = []
+	gap = width // rows
+	for i in range(rows):
+		grid.append([])
+		for j in range(rows):
+			cell = Cell(i, j, gap, rows)
+			grid[i].append(cell)
+
+	return grid
+
+
+def draw_grid_lines(win, rows, width):
+	gap = width // rows
+	for i in range(rows):
+		pygame.draw.line(win, GREY, (0, i * gap), (width, i * gap))
+	for j in range(rows):
+		pygame.draw.line(win, GREY, (j * gap, 0), (j * gap, width))
+
+
+def draw(win, grid, rows, width):
+	win.fill(WHITE)
+
+	for row in grid:
+		for cell in row:
+			cell.draw(win)
+
+	draw_grid_lines(win, rows, width)
+	pygame.display.update()
+
+
+def get_clicked_pos(mouse_position, rows, width):
+	gap = width // rows
+	x, y = mouse_position
+
+	row = x // gap
+	col = y // gap
+
+	return row, col
+
+
+def main(win, width):
+	ROWS = 13
+	grid = make_grid(ROWS, width)
+
+	start = None
+	end = None
+
+	run = True
+	while run:
+		draw(win, grid, ROWS, width)
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				run = False
+
+			if pygame.mouse.get_pressed()[0]: # LEFT
+				mouse_position = pygame.mouse.get_pos()
+				row, col = get_clicked_pos(mouse_position, ROWS, width)
+				cell = grid[row][col]
+				if not start and cell != end:
+					start = cell
+					start.make_start()
+
+				elif not end and cell != start:
+					end = cell
+					end.make_end()
+
+				elif cell != end and cell != start:
+					cell.make_barrier()
+
+			elif pygame.mouse.get_pressed()[2]: # RIGHT
+				mouse_position = pygame.mouse.get_pos()
+				row, col = get_clicked_pos(mouse_position, ROWS, width)
+				cell = grid[row][col]
+				cell.reset()
+				if cell == start:
+					start = None
+				elif cell == end:
+					end = None
+
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_SPACE and start and end:
+					for row in grid:
+						for cell in row:
+							cell.update_neighbors(grid)
+
+					algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
+
+				if event.key == pygame.K_c:
+					start = None
+					end = None
+					grid = make_grid(ROWS, width)
+
+
+	pygame.quit()
+
+main(WIN, WIDTH)
